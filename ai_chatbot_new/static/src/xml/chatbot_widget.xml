@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="ai_chatbot_new.ChatbotWidget">
+        <div class="o_ai_chatbot_new_root">
+
+            <!-- Popup chat window -->
+            <div t-if="state.isOpen" class="o_ai_chatbot_new_window">
+                <div class="o_ai_chatbot_new_header">
+                    <span>AI Assistant</span>
+                    <i class="fa fa-times o_ai_chatbot_new_close" t-on-click="closeChat" role="button"/>
+                </div>
+
+                <div class="o_ai_chatbot_new_body" t-ref="messagesBody">
+                    <div t-if="!state.messages.length" class="o_ai_chatbot_new_welcome">
+                        Hi! Ask me anything and I'll do my best to help.
+                    </div>
+                    <t t-foreach="state.messages" t-as="msg" t-key="msg_index">
+                        <div t-attf-class="o_ai_chatbot_new_message o_ai_chatbot_new_message_{{msg.role}}">
+                            <span t-esc="msg.text"/>
+                        </div>
+                    </t>
+                    <div t-if="state.isLoading"
+                         class="o_ai_chatbot_new_message o_ai_chatbot_new_message_bot o_ai_chatbot_new_typing">
+                        <span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                    </div>
+                </div>
+
+                <div class="o_ai_chatbot_new_footer">
+                    <input type="text"
+                           t-ref="chatInput"
+                           class="o_ai_chatbot_new_input"
+                           placeholder="Type your message..."
+                           t-att-value="state.inputText"
+                           t-on-input="onInput"
+                           t-on-keydown="onKeydown"/>
+                    <button class="o_ai_chatbot_new_send_btn"
+                            t-on-click="sendMessage"
+                            t-att-disabled="state.isLoading"
+                            title="Send">
+                        <i class="fa fa-paper-plane"/>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Floating toggle button -->
+            <button class="o_ai_chatbot_new_toggle_btn"
+                    t-on-click="toggleChat"
+                    title="Chat with AI Assistant">
+                <i t-if="!state.isOpen" class="fa fa-comments"/>
+                <i t-else="" class="fa fa-times"/>
+            </button>
+        </div>
+    </t>
+
+</templates>
