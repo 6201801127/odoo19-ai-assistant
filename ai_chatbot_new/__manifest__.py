@@ -19,7 +19,8 @@ Features
 - API key / URL / model configurable from Settings > General Settings
   (no code changes needed to switch providers).
 """,
-    'author': 'Your Company',
+    'author': 'Ajay Kumar Ravidas',
+    'images': ['static/description/banner.png'],
     'license': 'LGPL-3',
     'depends': ['base', 'web'],
     'data': [
