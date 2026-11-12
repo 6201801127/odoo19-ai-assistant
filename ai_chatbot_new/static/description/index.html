@@ -1,0 +1,69 @@
+<section style="font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color:#2c1e29; line-height:1.6; max-width:960px; margin:0 auto; padding:24px 16px;">
+
+  <h1 style="margin:0 0 8px; font-size:34px; color:#714B67;">AI Chatbot for Odoo</h1>
+  <p style="font-size:18px; margin:0 0 24px;">
+    A floating assistant on every Odoo screen that answers from <strong>your company's own data</strong>:
+    leave balances, HR policies, sales, invoices, stock and projects. Not from a generic model that stopped learning in 2024.
+  </p>
+
+  <h2 style="color:#714B67;">The problem it solves</h2>
+  <p>
+    A plain AI chat widget only knows what the model was trained on. Ask it
+    <em>"How many Casual Leave do I have left?"</em> or <em>"What is our leave policy?"</em>
+    and it can only guess or tell you to check with HR. This module fixes that by looking up the real
+    answer in your Odoo database first, then letting the AI explain it in plain language.
+  </p>
+
+  <h2 style="color:#714B67;">What your team can ask</h2>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr style="background:#f5f0f4;"><th style="text-align:left; padding:10px;">Question</th><th style="text-align:left; padding:10px;">Where the answer comes from</th></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #e6dce3;">"How many Casual Leave are assigned to me?"</td><td style="padding:10px; border-bottom:1px solid #e6dce3;">Your live Time Off allocations</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #e6dce3;">"Who is my manager?"</td><td style="padding:10px; border-bottom:1px solid #e6dce3;">Your Employee record</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #e6dce3;">"What is our leave / WFH / expense policy?"</td><td style="padding:10px; border-bottom:1px solid #e6dce3;">The Knowledge Base your HR team maintains</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #e6dce3;">"How many sales orders are confirmed this month?"</td><td style="padding:10px; border-bottom:1px solid #e6dce3;">Sales (live lookup)</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #e6dce3;">"Which invoices are still unpaid?"</td><td style="padding:10px; border-bottom:1px solid #e6dce3;">Invoicing (live lookup)</td></tr>
+    <tr><td style="padding:10px;">"What is the stock on hand for product X?"</td><td style="padding:10px;">Inventory (live lookup)</td></tr>
+  </table>
+
+  <h2 style="color:#714B67;">Key features</h2>
+  <ul>
+    <li><strong>Company-data grounding.</strong> Personal HR data (leave balance, department, manager) and matching policy entries are added to the AI prompt before it answers.</li>
+    <li><strong>Live database lookups.</strong> Using the AI provider's tool calling, the assistant can read Sales, CRM, Invoicing, Inventory, Project and HR records to answer questions about current business data.</li>
+    <li><strong>Knowledge Base.</strong> HR or admins add policy text and keywords under <em>AI Chatbot &gt; Knowledge Base</em>. No developer needed.</li>
+    <li><strong>Works with your choice of AI.</strong> OpenAI-compatible APIs (OpenAI, Azure OpenAI, Groq, Mistral, DeepSeek, OpenRouter, Ollama and others), Google Gemini and Anthropic Claude. Switch from Settings.</li>
+    <li><strong>Always one click away.</strong> A floating chat button on every backend screen.</li>
+    <li><strong>Admin switches.</strong> Turn data grounding and live lookups on or off independently.</li>
+  </ul>
+
+  <h2 style="color:#714B67;">Security and privacy</h2>
+  <ul>
+    <li><strong>Respects Odoo access rights.</strong> Every lookup runs as the person asking, with no elevated access. If a user cannot open Sales orders in Odoo, the chatbot cannot show them either.</li>
+    <li><strong>Read-only.</strong> The assistant cannot create, change or delete records.</li>
+    <li><strong>Fixed allow-list.</strong> Only specific models and fields (listed in the code) can be queried, and results are capped per request.</li>
+    <li><strong>Data sent to your AI provider.</strong> The question and the relevant records it needs are sent to the provider you configure. Choose a provider that fits your company's data policy (for example a self-hosted model through Ollama).</li>
+  </ul>
+
+  <h2 style="color:#714B67;">Setup in 3 steps</h2>
+  <ol>
+    <li>Install the module (it depends on <em>Time Off</em>).</li>
+    <li>Go to <em>Settings &gt; General Settings &gt; AI Chatbot</em>, pick your provider, and enter the API key and model.</li>
+    <li>Optional: add policy entries under <em>AI Chatbot &gt; Knowledge Base</em>.</li>
+  </ol>
+
+  <h2 style="color:#714B67;">Requirements</h2>
+  <ul>
+    <li>Odoo 19 with the Time Off (<code>hr_holidays</code>) app.</li>
+    <li>An API key for your chosen AI provider (usage is billed by that provider, not by this module).</li>
+    <li>For live lookups, a model that supports tool/function calling. Sales, CRM, Invoicing, Inventory and Project are optional; the assistant only uses the apps you have installed.</li>
+    <li>Employees need a linked Employee record to get personal HR answers.</li>
+  </ul>
+
+  <h2 style="color:#714B67;">Good to know</h2>
+  <ul>
+    <li>Answers about general world knowledge still come from the AI model and may be out of date. Company answers come from your Odoo data.</li>
+    <li>If the data is not available, the assistant is instructed to say so rather than invent a number.</li>
+  </ul>
+
+  <h2 style="color:#714B67;">Support</h2>
+  <p>Questions or feature requests? Contact the author through the Odoo Apps page for this module.</p>
+</section>
